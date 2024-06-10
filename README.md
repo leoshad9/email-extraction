@@ -1,1 +1,1 @@
-# email-extraction
+Extract emails from a file.
