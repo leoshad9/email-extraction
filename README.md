@@ -66,7 +66,7 @@ python email_extractor.py
 
 ## Contributing
 
-Feel free to fork the repository and submit pull requests if you have suggestions or improvements.
+If you have suggestions or improvements, feel free to fork the repository and submit a pull request.
 
 ## License
 
