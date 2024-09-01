@@ -1,17 +1,40 @@
-# Author: MOHD SHADMAN
+# Author: MOHAMMAD SHADMAN
 
-# Defining a regular expression for matching email addresses
-import re
+import re  # Import the regular expression module to work with regex in Python
 
+# Define a regular expression pattern for matching email addresses
+# This pattern matches standard email formats with the following structure:
+# - Begins with word characters (letters, digits, underscores), dots, percent signs, plus signs, or hyphens
+# - Followed by an '@' symbol
+# - Followed by more word characters or dots (domain name)
+# - Ends with a dot and a domain suffix of at least two letters (e.g., .com, .org, .net)
 email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'
 
-# Open the text file for reading
-with open('text_file.txt', 'r') as f:
-    # Read the entire file contents into a string
-    file_contents = f.read()
+# Try to open the text file for reading
+try:
+    # 'with' statement ensures the file is properly closed after its suite finishes, even if an error occurs
+    with open('text_file.txt', 'r') as f:
+        # Read the entire contents of the file into a string variable
+        file_contents = f.read()
 
-    # Use the findall method of the re module to extract all email addresses
-    email_addresses = re.findall(email_regex, file_contents)
+        # Use the 'findall' method from the 're' module to extract all email addresses
+        # that match the defined pattern within the file contents
+        email_addresses = re.findall(email_regex, file_contents)
 
-    # Print the extracted email addresses
-    print(email_addresses)
+        # Check if any email addresses were found
+        if email_addresses:
+            print(f"Found {len(email_addresses)} email addresses:")
+            # Print each extracted email address on a new line
+            for email in email_addresses:
+                print(email)
+        else:
+            # Inform the user if no email addresses were found
+            print("No email addresses found in the file.")
+
+# Handle the case where the file is not found and provide user guidance
+except FileNotFoundError:
+    print("The file 'text_file.txt' was not found. Please check the file path and try again.")
+
+# Catch any other exceptions and print the error message to help with debugging
+except Exception as e:
+    print(f"An error occurred: {e}")
