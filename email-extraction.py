@@ -21,15 +21,20 @@ try:
         # that match the defined pattern within the file contents
         email_addresses = re.findall(email_regex, file_contents)
 
-        # Check if any email addresses were found
-        if email_addresses:
-            print(f"Found {len(email_addresses)} email addresses:")
-            # Print each extracted email address on a new line
-            for email in email_addresses:
-                print(email)
-        else:
-            # Inform the user if no email addresses were found
-            print("No email addresses found in the file.")
+        # Define the output file path
+        output_file_path = 'extracted_emails.txt'
+
+        # Open the output file for writing
+        with open(output_file_path, 'w') as out_file:
+            # Check if any email addresses were found
+            if email_addresses:
+                out_file.write(f"Found {len(email_addresses)} email addresses:\n")
+                # Write each extracted email address to the file on a new line
+                for email in email_addresses:
+                    out_file.write(f"{email}\n")
+            else:
+                # Inform the user in the output file if no email addresses were found
+                out_file.write("No email addresses found in the file.")
 
 # Handle the case where the file is not found and provide user guidance
 except FileNotFoundError:
