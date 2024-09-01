@@ -1,61 +1,71 @@
-## Email Extractor
+# Email Extractor
 
-This Python script extracts email addresses from a text file using regular expressions. It's a simple tool designed to help you quickly find and list all email addresses present in a file.
+This repository contains a Python script for extracting email addresses from a text file and writing the results to a new file.
 
-### Author
+## Prerequisites
 
-MOHD SHADMAN
+- **Python 3.x**: Ensure Python 3 is installed on your system.
+- **Text File**: The script requires a text file named `text_file.txt` in the same directory as the script.
 
-### Overview
+## Script Overview
 
-The **Email Extractor** script reads the contents of a text file (`text_file.txt`) and uses a regular expression to find and extract all email addresses. The extracted email addresses are then printed to the console, one per line.
+### `email_extractor.py`
 
-### Features
+**Author**: Mohammad Shadman
 
-- Extracts email addresses from a text file.
-- Uses a regular expression to identify standard email formats.
-- Handles file not found errors gracefully.
+**Description**: This script reads `text_file.txt`, extracts email addresses using a regular expression, and writes the results to `extracted_emails.txt`.
 
-### Requirements
-
-- **Python 3.x**: Ensure you have Python installed on your system.
-- A text file named `text_file.txt` in the same directory as the script.
-
-### Usage
-
-1. **Clone the repository** or download the script directly.
-
-2. **Prepare the text file**:
-   - Create a text file named `text_file.txt`.
-   - Place the file in the same directory as the script.
-   - Add some text containing email addresses to the file.
-
-3. **Run the script**:
-   ```bash
-   python email_extractor.py
-   ```
-
-### Example Output
-
-When you run the script, it will display the number of email addresses found and list each email address on a new line:
+**Usage**:
 
 ```bash
+python email_extractor.py
+```
+
+**Functionality**:
+
+- **File Reading**: Opens and reads the contents of `text_file.txt`.
+- **Email Extraction**: Uses a regular expression to identify and extract email addresses.
+- **Output**: Writes the extracted email addresses to `extracted_emails.txt`. If no email addresses are found, it writes "No email addresses found in the file." If `text_file.txt` is missing, it prints an error message to the console.
+
+**Example**:
+
+```bash
+python email_extractor.py
+```
+
+**Expected Output**:
+
+- If email addresses are found:
+
+```
 Found 3 email addresses:
 example1@example.com
 user.name@domain.co
 test.email+regex@sub.domain.net
 ```
 
-### Error Handling
+- If no email addresses are found:
 
-If the script cannot find the `text_file.txt` file, it will output an error message:
+```
+No email addresses found in the file.
+```
 
-```bash
+- If `text_file.txt` is not found, the script prints:
+
+```
 The file 'text_file.txt' was not found. Please check the file path and try again.
 ```
 
-If any other error occurs, it will display a generic error message with details about the exception.
+- For other exceptions:
 
-### License
+```
+An error occurred: [Error details]
+```
 
-This project is open-source and available under the MIT License. See the `LICENSE` file for more details.
+## Contributing
+
+Feel free to fork the repository and submit pull requests if you have suggestions or improvements.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
