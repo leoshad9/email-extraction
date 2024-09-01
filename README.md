@@ -5,7 +5,7 @@ This repository contains a Python script for extracting email addresses from a t
 ## Prerequisites
 
 - **Python 3.x**: Ensure Python 3 is installed on your system.
-- **Text File**: The script requires a text file named `text_file.txt` in the same directory as the script.
+- **Text File**: The script requires a text file named `text_file.txt` by default, but you can specify a different input file name in the script.
 
 ## Script Overview
 
@@ -13,7 +13,7 @@ This repository contains a Python script for extracting email addresses from a t
 
 **Author**: Mohammad Shadman
 
-**Description**: This script reads `text_file.txt`, extracts email addresses using a regular expression, and writes the results to `extracted_emails.txt`.
+**Description**: This script reads an input text file, extracts email addresses using a regular expression, and writes the results to `extracted_emails.txt`.
 
 **Usage**:
 
@@ -23,9 +23,17 @@ python email_extractor.py
 
 **Functionality**:
 
-- **File Reading**: Opens and reads the contents of `text_file.txt`.
+- **File Reading**: Opens and reads the contents of the specified input file (default: `text_file.txt`).
 - **Email Extraction**: Uses a regular expression to identify and extract email addresses.
-- **Output**: Writes the extracted email addresses to `extracted_emails.txt`. If no email addresses are found, it writes "No email addresses found in the file." If `text_file.txt` is missing, it prints an error message to the console.
+- **Output**: Writes the extracted email addresses to `extracted_emails.txt`. If no email addresses are found, it writes "No email addresses found in the file." If the input file is missing, it prints an error message to the console.
+
+**Changing the Input File Name**:
+
+To use a different input file name, modify the `input_file_path` variable in the script. For example, to use `myfile.txt` instead of `text_file.txt`, update the variable like so:
+
+```python
+input_file_path = 'myfile.txt'
+```
 
 **Example**:
 
@@ -50,7 +58,7 @@ test.email+regex@sub.domain.net
 No email addresses found in the file.
 ```
 
-- If `text_file.txt` is not found, the script prints:
+- If the specified input file is not found, the script prints:
 
 ```
 The file 'text_file.txt' was not found. Please check the file path and try again.
