@@ -1,6 +1,10 @@
 # Author: MOHAMMAD SHADMAN
 
 import re  # Import the regular expression module to work with regex in Python
+import logging  # Import the logging module for better logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def extract_emails(input_file_path, output_file_path):
     """Extracts email addresses from a text file and writes them to a new file if any are found.
@@ -18,7 +22,7 @@ def extract_emails(input_file_path, output_file_path):
 
     try:
         # Read the contents of the input file
-        with open(input_file_path, 'r') as file:
+        with open(input_file_path, 'r', encoding='utf-8') as file:  # Specify encoding
             file_contents = file.read()
 
         # Extract email addresses using the regex pattern
@@ -26,23 +30,23 @@ def extract_emails(input_file_path, output_file_path):
 
         if email_addresses:
             # Write extracted email addresses to the output file
-            with open(output_file_path, 'w') as file:
+            with open(output_file_path, 'w', encoding='utf-8') as file:  # Specify encoding
                 file.write(f"Found {len(email_addresses)} email addresses:\n")
                 for email in email_addresses:
                     file.write(f"{email}\n")
             
             # Inform the user that emails have been saved
-            print(f"Found {len(email_addresses)} email addresses. Emails are saved to '{output_file_path}'.")
+            logging.info(f"Found {len(email_addresses)} email addresses. Emails are saved to '{output_file_path}'.")
         else:
             # Inform the user if no email addresses are found
-            print("No email addresses found.")
+            logging.info("No email addresses found.")
 
     except FileNotFoundError:
         # Handle case where the input file does not exist
-        print(f"The file '{input_file_path}' was not found. Please check the file path and try again.")
+        logging.error(f"The file '{input_file_path}' was not found. Please check the file path and try again.")
     except Exception as e:
         # Handle any other exceptions that may occur
-        print(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     # Define default file paths
